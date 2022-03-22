@@ -288,8 +288,10 @@ window.addEventListener("load", async () => {
 	const rewardProgramContract = new web3.eth.Contract(rewardProgramABI, rewardProgramAddress);
         rewardProgramContract.setProvider(window.ethereum);
         var nftOwner = await rewardProgramContract.methods.ownerOfNft().call();
+	
+	var compareAddresses = activeAddress.localeCompare(nftOwner);
 
-    	 if (nftOwner === activeAddress) {
+    	 if (compareAddresses == 0) {
     	  document.getElementById("myButton1").value="Enter";
           document.getElementById("myButton1").href="founder-page.html";
     	  }
