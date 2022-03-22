@@ -289,11 +289,13 @@ window.addEventListener("load", async () => {
         rewardProgramContract.setProvider(window.ethereum);
         var nftOwner = await rewardProgramContract.methods.ownerOfNft().call();
 	
+	console.log(nftOwner);
+	console.log(activeAddress);      
+	
 	var compareAddresses = activeAddress.localeCompare(nftOwner);
 
     	 if (compareAddresses == 0) {
     	  document.getElementById("myButton1").value="Enter";
-          document.getElementById("myButton1").href="founder-page.html";
     	  }
       }
 })
