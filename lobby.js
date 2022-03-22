@@ -289,7 +289,9 @@ window.addEventListener("load", async () => {
         rewardProgramContract.setProvider(window.ethereum);
         var nftOwner = await rewardProgramContract.methods.ownerOfNft().call();
 	var nftOwnerLowerCase = nftOwner.toLowerCase();
-	console.log(nftOwnerLowerCase);    
+	      
+	console.log(nftOwnerLowerCase);
+	console.log(activeAddress);
 
     	if (nftOwnerLowerCase === activeAddress) {
     	  document.getElementById("myButton1").value="Enter";
