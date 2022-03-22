@@ -289,7 +289,7 @@ window.addEventListener("load", async () => {
         rewardProgramContract.setProvider(window.ethereum);
         var nftOwner = await rewardProgramContract.methods.ownerOfNft().call();
 
-    	 if (nftOwner == activeAddress) {
+    	 if (nftOwner === activeAddress) {
     	  document.getElementById("myButton1").value="Enter";
           document.getElementById("myButton1").href="founder-page.html";
     	  }
