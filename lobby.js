@@ -292,8 +292,6 @@ window.addEventListener("load", async () => {
     	 if (nftOwner == activeAddress) {
     	  document.getElementById("myButton1").value="Enter";
           document.getElementById("myButton1").href="founder-page.html";
-	  var findlink = document.getElementById("myButton1");
-	  findlink.href = "founder-page.html";
     	  }
       }
 })
