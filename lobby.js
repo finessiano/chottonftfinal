@@ -288,11 +288,10 @@ window.addEventListener("load", async () => {
 	const rewardProgramContract = new web3.eth.Contract(rewardProgramABI, rewardProgramAddress);
         rewardProgramContract.setProvider(window.ethereum);
         var nftOwner = await rewardProgramContract.methods.ownerOfNft().call();
-	      
-	console.log(nftOwner.toLowerCase());
-	console.log(activeAddress.toLowerCase());      
+	var nftOwnerLowerCase = nftOwner.toLowerCase();
+	console.log(nftOwnerLowerCase);    
 
-    	if (nftOwner.toLowerCase() === activeAddress.toLowerCase()) {
+    	if (nftOwnerLowerCase === activeAddress) {
     	  document.getElementById("myButton1").value="Enter";
     	}
       }
