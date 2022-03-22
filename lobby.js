@@ -276,7 +276,6 @@ const rewardProgramABI =
 ]
 
 window.addEventListener("load", async () => {
-      await ethereum.enable();
       if (window.ethereum) {
         const web3 = new Web3(window.ethereum);
         await ethereum.request({ method: 'eth_requestAccounts'});
