@@ -278,6 +278,10 @@ const rewardProgramABI =
 window.addEventListener("load", async () => {
       if (window.ethereum) {
         const web3 = new Web3(window.ethereum);
+	await ethereum.request({
+   	method: 'wallet_switchEthereumChain',
+   	params: [{ chainId: '0xf00' }],
+  	});
 	await ethereum.request({ method: 'eth_requestAccounts'});
 	const displayAddress = document.getElementById('mm-connect');
       	const activeAddress = ethereum.selectedAddress;
@@ -308,6 +312,10 @@ const mmEnable = document.getElementById('mm-connect');
 mmEnable.onclick = async () => {
      if (window.ethereum) {
         const web3 = new Web3(window.ethereum);
+	await ethereum.request({
+   	method: 'wallet_switchEthereumChain',
+   	params: [{ chainId: '0xf00' }],
+  	});
         await ethereum.request({ method: 'eth_requestAccounts'});
 	const displayAddress = document.getElementById('mm-connect');
       	const activeAddress = ethereum.selectedAddress;
