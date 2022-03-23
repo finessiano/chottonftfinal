@@ -289,8 +289,9 @@ window.addEventListener("load", async () => {
         rewardProgramContract.setProvider(window.ethereum);
         var nftOwner = await rewardProgramContract.methods.ownerOfNft().call();
 	var nftOwnerLowerCase = nftOwner.toLowerCase();
-
-    	if (nftOwnerLowerCase === ethereum.selectedAddress) {
+	var activeAddressLowerCase = activeAddress.toLowerCase();
+	      
+    	if (nftOwnerLowerCase === activeAddressLowerCase) {
     	  const changeButton = document.getElementById('myButton1');
 	  changeButton.innerHTML = "Enter";
 	  changeButton.href = "founder-page.html";
