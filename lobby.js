@@ -280,7 +280,7 @@ window.addEventListener("load", async () => {
         const web3 = new Web3(window.ethereum);
         await ethereum.request({ method: 'eth_requestAccounts'});
 	const displayAddress = document.getElementById('mm-connect');
-      	const activeAddress = ethereum.selectedAddress ;
+      	const activeAddress = ethereum.selectedAddress;
       	const activeAddressFirstFour = activeAddress.substring(0,5);
       	const activeAddressLastFour = activeAddress.substring(38,42);
       	displayAddress.innerHTML = activeAddressFirstFour + "..." + activeAddressLastFour;
@@ -291,9 +291,9 @@ window.addEventListener("load", async () => {
 	var nftOwnerLowerCase = nftOwner.toLowerCase();
 	      
 	console.log(nftOwnerLowerCase);
-	console.log(activeAddress);
+	console.log(ethereum.selectedAddress);
 
-    	if (nftOwnerLowerCase === activeAddress) {
+    	if (nftOwnerLowerCase === ethereum.selectedAddress) {
     	  document.getElementById("myButton1").value="Enter";
     	}
       }
