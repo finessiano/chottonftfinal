@@ -302,3 +302,29 @@ window.addEventListener("load", async () => {
 window.ethereum.on('accountsChanged', function () {
   window.location.reload();
 })
+
+const mmEnable = document.getElementById('mm-connect');
+
+mmEnable.onclick = async () => {
+     if (window.ethereum) {
+        const web3 = new Web3(window.ethereum);
+        await ethereum.request({ method: 'eth_requestAccounts'});
+	const displayAddress = document.getElementById('mm-connect');
+      	const activeAddress = ethereum.selectedAddress;
+      	const activeAddressFirstFour = activeAddress.substring(0,5);
+      	const activeAddressLastFour = activeAddress.substring(38,42);
+      	displayAddress.innerHTML = activeAddressFirstFour + "..." + activeAddressLastFour;
+
+	const rewardProgramContract = new web3.eth.Contract(rewardProgramABI, rewardProgramAddress);
+        rewardProgramContract.setProvider(window.ethereum);
+        var nftOwner = await rewardProgramContract.methods.ownerOfNft().call();
+	var nftOwnerLowerCase = nftOwner.toLowerCase();
+	var activeAddressLowerCase = activeAddress.toLowerCase();
+	      
+    	if (nftOwnerLowerCase === activeAddressLowerCase) {
+    	  const changeButton = document.getElementById('myButton1');
+	  changeButton.innerHTML = "Enter";
+	  changeButton.href = "founder-page.html";
+    	}
+      }
+}
