@@ -291,7 +291,7 @@ window.addEventListener("load", async () => {
 	var nftOwnerLowerCase = nftOwner.toLowerCase();
 
     	if (nftOwnerLowerCase === ethereum.selectedAddress) {
-    	  console.log(success);
+    	  console.log("success");
     	}
       }
 })
