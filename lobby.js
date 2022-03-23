@@ -290,7 +290,6 @@ window.addEventListener("load", async () => {
         var nftOwner = await rewardProgramContract.methods.ownerOfNft().call();
 	var nftOwnerLowerCase = nftOwner.toLowerCase();
 	      
-	console.log(nftOwnerLowerCase);
 	console.log(ethereum.selectedAddress);
 
     	if (nftOwnerLowerCase === ethereum.selectedAddress) {
