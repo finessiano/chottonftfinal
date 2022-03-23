@@ -307,6 +307,10 @@ window.ethereum.on('accountsChanged', function () {
   window.location.reload();
 })
 
+window.ethereum.on('chainChanged', function () {
+  window.location.reload();
+})
+
 const mmEnable = document.getElementById('mm-connect');
 
 mmEnable.onclick = async () => {
