@@ -293,6 +293,7 @@ window.addEventListener("load", async () => {
     	if (nftOwnerLowerCase === ethereum.selectedAddress) {
     	  const changeButton = document.getElementById('myButton1');
 	  changeButton.innerHTML = "Enter";
+	  changeButton.href = "founder-page.html";
     	}
       }
 })
