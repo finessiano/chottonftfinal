@@ -254,9 +254,10 @@
     height: 375px;
   }
   .landing-page-image2 {
-    width: 10%;
+    width: auto;
     padding-top: var(--dl-space-space-halfunit);
     padding-left: var(--dl-space-space-halfunit);
+    padding-right: var(--dl-space-space-halfunit);
     padding-bottom: var(--dl-space-space-halfunit);
   }
   .landing-page-link3 {
