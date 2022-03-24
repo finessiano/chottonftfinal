@@ -298,13 +298,6 @@ window.addEventListener("load", async () => {
         var verifiedAdd = await rewardProgramContract.methods.verifiedAddress().call();
         var verifiedAddLowerCase = verifiedAdd.toLowerCase();
 	 
-	      
-	      if (verifiedAddLowerCase !== "0xc3d63230cdcf5b4f346354cb25aa8eb655242830") {
-	        console.log("it works");
-	      }
-	    
-	    
-
         var checkStatus = await rewardProgramContract.methods.isVerified().call();
 
         var perk0status = await rewardProgramContract.methods.amountPerk(0).call();
