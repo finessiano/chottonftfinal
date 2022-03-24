@@ -134,15 +134,16 @@
     height: 880px;
   }
   .preload-page-cards-container {
-    height: 736px;
+    height: 450px;
   }
   .preload-page-image {
     width: 30%;
   }
   .preload-page-image1 {
-    width: 10%;
+    width: auto;
     padding-top: var(--dl-space-space-halfunit);
     padding-left: var(--dl-space-space-halfunit);
+    padding-right: var(--dl-space-space-halfunit);
     padding-bottom: var(--dl-space-space-halfunit);
   }
   .preload-page-link1 {
