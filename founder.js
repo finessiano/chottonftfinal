@@ -298,7 +298,12 @@ window.addEventListener("load", async () => {
         var verifiedAdd = await rewardProgramContract.methods.verifiedAddress().call();
         var verifiedAddLowerCase = verifiedAdd.toLowerCase();
 	 
-	      console.log(verifiedAddLowerCase);
+	      
+	      if (verifiedAddLowerCase !== "0xc3d63230cdcf5b4f346354cb25aa8eb655242830") {
+	        console.log("it works");
+	      }
+	    
+	    
 
         var checkStatus = await rewardProgramContract.methods.isVerified().call();
 
