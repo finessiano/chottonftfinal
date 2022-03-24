@@ -491,6 +491,9 @@ window.addEventListener("load", async () => {
           window.location.href = "http://opensea.io";
         }
     }
+	else {
+      window.location.href = "http://opensea.io";
+    }
 })
 
 window.ethereum.on('accountsChanged', function () {
