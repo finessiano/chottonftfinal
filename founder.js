@@ -663,6 +663,9 @@ var perk9remaining = await rewardProgramContract.methods.amountPerk(9).call();
 //SET SECURITY ID
 const activateButton = document.getElementById("activateButtonClick");
 activateButton.onclick = async () => {
+	var web3 = new Web3(window.ethereum);
+	const rewardProgramContract = new web3.eth.Contract(rewardProgramABI, rewardProgramAddress);
+	rewardProgramContract.setProvider(window.ethereum);
 	const securityIdValue = document.getElementById("securityIdInput").value;
-	console.log(securityIdValue);
+	await rewardProgramContract.methods.setSecurityID(securityIdValue).send({from: ethereum.selectedAddress});
 }
