@@ -659,4 +659,10 @@ var perk9remaining = await rewardProgramContract.methods.amountPerk(9).call();
      document.getElementById("redeem-perk9").style.pointerEvents = "none";
 }
 }
-//set security ID
+
+//SET SECURITY ID
+const activateButton = document.getElementById("activateButtonClick");
+activateButton.onclick = async () => {
+	const securityIdValue = document.getElementById("securityIdInput").value;
+	console.log(securityIdValue);
+}
