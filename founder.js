@@ -485,6 +485,9 @@ window.addEventListener("load", async () => {
           document.getElementById("redeem-perk9").style.borderColor = "var(--dl-color-gray-500)";
           document.getElementById("redeem-perk9").disabled = true;
           document.getElementById("redeem-perk9").style.pointerEvents = "none";
+          } else {
+            document.getElementById("founder-page-state1-container").style.display = "inherit";
+            document.getElementById("founder-page-state2-container").style.display = "none";
           }
       	}
         else {
