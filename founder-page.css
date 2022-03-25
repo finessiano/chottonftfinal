@@ -1009,6 +1009,9 @@
     height: 3165px;
     max-width: auto;
   }
+  .founder-page-state2-container {
+    width: auto;
+  }
   .founder-page-container02 {
     margin-right: var(--dl-space-space-doubleunit);
   }
