@@ -993,18 +993,57 @@
     background-color: #000000;
   }
   .founder-page-main {
-    height: 880px;
+    width: auto;
+    height: 3176px;
   }
   .founder-page-image {
     width: 30%;
   }
+  .founder-page-state1-container {
+    width: auto;
+  }
+  .founder-page-state1-text {
+    max-width: auto;
+  }
   .founder-page-cards-container {
-    height: 736px;
+    height: 3165px;
+    max-width: auto;
+  }
+  .founder-page-container02 {
+    margin-right: var(--dl-space-space-doubleunit);
+  }
+  .founder-page-container03 {
+    margin-right: var(--dl-space-space-doubleunit);
+  }
+  .founder-page-container04 {
+    margin-right: var(--dl-space-space-doubleunit);
+  }
+  .founder-page-container05 {
+    margin-right: var(--dl-space-space-doubleunit);
+  }
+  .founder-page-container06 {
+    margin-right: var(--dl-space-space-doubleunit);
+  }
+  .founder-page-container08 {
+    margin-left: var(--dl-space-space-doubleunit);
+  }
+  .founder-page-container09 {
+    margin-left: var(--dl-space-space-doubleunit);
+  }
+  .founder-page-container10 {
+    margin-left: var(--dl-space-space-doubleunit);
+  }
+  .founder-page-container11 {
+    margin-left: var(--dl-space-space-doubleunit);
+  }
+  .founder-page-container12 {
+    margin-left: var(--dl-space-space-doubleunit);
   }
   .founder-page-image1 {
-    width: 10%;
+    width: auto;
     padding-top: var(--dl-space-space-halfunit);
     padding-left: var(--dl-space-space-halfunit);
+    padding-right: var(--dl-space-space-halfunit);
     padding-bottom: var(--dl-space-space-halfunit);
   }
   .founder-page-link1 {
