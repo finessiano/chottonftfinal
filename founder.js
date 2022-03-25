@@ -1,7 +1,7 @@
-// contract address on Kovan:
+// SMART CONTRACT DETAILS
+
 const rewardProgramAddress = '0x9724cC3Beff4316dfdeA0533c4ba5eC6C7E809e7'
 
-// add contract ABI:
 const rewardProgramABI =
 
 [
@@ -275,8 +275,10 @@ const rewardProgramABI =
 }
 ]
 
+// EXECUTE ON LOAD
+
 window.addEventListener("load", async () => {
-      if (window.ethereum) {
+   if (window.ethereum) {
       const web3 = new Web3(window.ethereum);
       await ethereum.request({
       method: 'wallet_switchEthereumChain',
@@ -444,19 +446,26 @@ window.addEventListener("load", async () => {
     }
 })
 
+// EXECUTE ON ACCOUNT CHANGE
+
 window.ethereum.on('accountsChanged', function () {
   window.location.reload();
 })
+
+// EXECUTE ON CHAIN CHANGE
 
 window.ethereum.on('chainChanged', function () {
   window.location.reload();
 })
 
-const mmEnable = document.getElementById('mm-connect');
+// EXECUTE ON CONNECT WALLET BUTTON CLICK
 
+const mmEnable = document.getElementById('mm-connect');
 mmEnable.onclick = async () => {
   window.location.reload();
 }
+
+// REDEEM PERKS
 
 const redeemPerk0 = document.getElementById('redeem-perk0');
 redeemPerk0.onclick = async () => {
@@ -609,6 +618,7 @@ var perk9remaining = await rewardProgramContract.methods.amountPerk(9).call();
 }
 
 //SET SECURITY ID
+
 const activateButton = document.getElementById("activateButtonClick");
 activateButton.onclick = async () => {
 	var web3 = new Web3(window.ethereum);
