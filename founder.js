@@ -277,214 +277,162 @@ const rewardProgramABI =
 
 window.addEventListener("load", async () => {
       if (window.ethereum) {
-        const web3 = new Web3(window.ethereum);
-	      await ethereum.request({
-   	    method: 'wallet_switchEthereumChain',
-   	    params: [{ chainId: '0x2a' }],
-  	    });
-	      await ethereum.request({ method: 'eth_requestAccounts'});
-	      const displayAddress = document.getElementById('mm-connect');
-      	const activeAddress = ethereum.selectedAddress;
-      	const activeAddressFirstFour = activeAddress.substring(0,5);
-      	const activeAddressLastFour = activeAddress.substring(38,42);
-      	displayAddress.innerHTML = activeAddressFirstFour + "..." + activeAddressLastFour;
+      const web3 = new Web3(window.ethereum);
+      await ethereum.request({
+      method: 'wallet_switchEthereumChain',
+      params: [{ chainId: '0x2a' }],
+      });
+      await ethereum.request({ method: 'eth_requestAccounts'});
+      const displayAddress = document.getElementById('mm-connect');
+      const activeAddress = ethereum.selectedAddress;
+      const activeAddressFirstFour = activeAddress.substring(0,5);
+      const activeAddressLastFour = activeAddress.substring(38,42);
+      displayAddress.innerHTML = activeAddressFirstFour + "..." + activeAddressLastFour;
 
-	      const rewardProgramContract = new web3.eth.Contract(rewardProgramABI, rewardProgramAddress);
-        rewardProgramContract.setProvider(window.ethereum);
-        var nftOwner = await rewardProgramContract.methods.ownerOfNft().call();
-	      var nftOwnerLowerCase = nftOwner.toLowerCase();
-      	var activeAddressLowerCase = activeAddress.toLowerCase();
+      const rewardProgramContract = new web3.eth.Contract(rewardProgramABI, rewardProgramAddress);
+      rewardProgramContract.setProvider(window.ethereum);
+      var nftOwner = await rewardProgramContract.methods.ownerOfNft().call();
+      var nftOwnerLowerCase = nftOwner.toLowerCase();
+      var activeAddressLowerCase = activeAddress.toLowerCase();
+      var verifiedAdd = await rewardProgramContract.methods.verifiedAddress().call();
+      var verifiedAddLowerCase = verifiedAdd.toLowerCase();	 
+      var checkStatus = await rewardProgramContract.methods.isVerified().call();
 
-        var verifiedAdd = await rewardProgramContract.methods.verifiedAddress().call();
-        var verifiedAddLowerCase = verifiedAdd.toLowerCase();
-	 
-        var checkStatus = await rewardProgramContract.methods.isVerified().call();
-
-        var perk0status = await rewardProgramContract.methods.amountPerk(0).call();
+      var perk0status = await rewardProgramContract.methods.amountPerk(0).call();
           if (perk0status == 0) {
              document.getElementById("redeem-perk0").style.color = "var(--dl-color-gray-500)";
              document.getElementById("redeem-perk0").style.borderColor = "var(--dl-color-gray-500)";
              document.getElementById("redeem-perk0").disabled = true;
              document.getElementById("redeem-perk0").style.pointerEvents = "none";
-          }  else {
-            document.getElementById("redeem-perk0").style.color = "#ffffff";
-            document.getElementById("redeem-perk0").style.borderColor = "#ffffff";
-            document.getElementById("redeem-perk0").disabled = false;
-            document.getElementById("redeem-perk0").style.pointerEvents = "auto";
-          }
+          }  
 
-          var perk1status = await rewardProgramContract.methods.amountPerk(1).call();
-            if (perk1status == 0) {
-               document.getElementById("redeem-perk1").style.color = "var(--dl-color-gray-500)";
-               document.getElementById("redeem-perk1").style.borderColor = "var(--dl-color-gray-500)";
-               document.getElementById("redeem-perk1").disabled = true;
-               document.getElementById("redeem-perk1").style.pointerEvents = "none";
-            }  else {
-              document.getElementById("redeem-perk1").style.color = "#ffffff";
-              document.getElementById("redeem-perk1").style.borderColor = "#ffffff";
-              document.getElementById("redeem-perk1").disabled = false;
-              document.getElementById("redeem-perk1").style.pointerEvents = "auto";
-            }
+      var perk1status = await rewardProgramContract.methods.amountPerk(1).call();
+          if (perk1status == 0) {
+             document.getElementById("redeem-perk1").style.color = "var(--dl-color-gray-500)";
+             document.getElementById("redeem-perk1").style.borderColor = "var(--dl-color-gray-500)";
+             document.getElementById("redeem-perk1").disabled = true;
+             document.getElementById("redeem-perk1").style.pointerEvents = "none";
+          }  
 
-            var perk2status = await rewardProgramContract.methods.amountPerk(2).call();
-              if (perk2status == 0) {
-                 document.getElementById("redeem-perk2").style.color = "var(--dl-color-gray-500)";
-                 document.getElementById("redeem-perk2").style.borderColor = "var(--dl-color-gray-500)";
-                 document.getElementById("redeem-perk2").disabled = true;
-                 document.getElementById("redeem-perk2").style.pointerEvents = "none";
-              }  else {
-                document.getElementById("redeem-perk2").style.color = "#ffffff";
-                document.getElementById("redeem-perk2").style.borderColor = "#ffffff";
-                document.getElementById("redeem-perk2").disabled = false;
-                document.getElementById("redeem-perk2").style.pointerEvents = "auto";
-              }
+      var perk2status = await rewardProgramContract.methods.amountPerk(2).call();
+          if (perk2status == 0) {
+             document.getElementById("redeem-perk2").style.color = "var(--dl-color-gray-500)";
+             document.getElementById("redeem-perk2").style.borderColor = "var(--dl-color-gray-500)";
+             document.getElementById("redeem-perk2").disabled = true;
+             document.getElementById("redeem-perk2").style.pointerEvents = "none";
+          } 
 
-              var perk3status = await rewardProgramContract.methods.amountPerk(3).call();
-                if (perk3status == 0) {
-                   document.getElementById("redeem-perk3").style.color = "var(--dl-color-gray-500)";
-                   document.getElementById("redeem-perk3").style.borderColor = "var(--dl-color-gray-500)";
-                   document.getElementById("redeem-perk3").disabled = true;
-                   document.getElementById("redeem-perk3").style.pointerEvents = "none";
-                }  else {
-                  document.getElementById("redeem-perk3").style.color = "#ffffff";
-                  document.getElementById("redeem-perk3").style.borderColor = "#ffffff";
-                  document.getElementById("redeem-perk3").disabled = false;
-                  document.getElementById("redeem-perk3").style.pointerEvents = "auto";
-                }
+      var perk3status = await rewardProgramContract.methods.amountPerk(3).call();
+          if (perk3status == 0) {
+             document.getElementById("redeem-perk3").style.color = "var(--dl-color-gray-500)";
+             document.getElementById("redeem-perk3").style.borderColor = "var(--dl-color-gray-500)";
+             document.getElementById("redeem-perk3").disabled = true;
+             document.getElementById("redeem-perk3").style.pointerEvents = "none";
+          }  
 
-                var perk4status = await rewardProgramContract.methods.amountPerk(4).call();
-                  if (perk4status == 0) {
-                     document.getElementById("redeem-perk4").style.color = "var(--dl-color-gray-500)";
-                     document.getElementById("redeem-perk4").style.borderColor = "var(--dl-color-gray-500)";
-                     document.getElementById("redeem-perk4").disabled = true;
-                     document.getElementById("redeem-perk4").style.pointerEvents = "none";
-                  }  else {
-                    document.getElementById("redeem-perk4").style.color = "#ffffff";
-                    document.getElementById("redeem-perk4").style.borderColor = "#ffffff";
-                    document.getElementById("redeem-perk4").disabled = false;
-                    document.getElementById("redeem-perk4").style.pointerEvents = "auto";
-                  }
+      var perk4status = await rewardProgramContract.methods.amountPerk(4).call();
+          if (perk4status == 0) {
+             document.getElementById("redeem-perk4").style.color = "var(--dl-color-gray-500)";
+             document.getElementById("redeem-perk4").style.borderColor = "var(--dl-color-gray-500)";
+             document.getElementById("redeem-perk4").disabled = true;
+             document.getElementById("redeem-perk4").style.pointerEvents = "none";
+          }  
 
-                  var perk5status = await rewardProgramContract.methods.amountPerk(5).call();
-                    if (perk5status == 0) {
-                       document.getElementById("redeem-perk5").style.color = "var(--dl-color-gray-500)";
-                       document.getElementById("redeem-perk5").style.borderColor = "var(--dl-color-gray-500)";
-                       document.getElementById("redeem-perk5").disabled = true;
-                       document.getElementById("redeem-perk5").style.pointerEvents = "none";
-                    }  else {
-                      document.getElementById("redeem-perk5").style.color = "#ffffff";
-                      document.getElementById("redeem-perk5").style.borderColor = "#ffffff";
-                      document.getElementById("redeem-perk5").disabled = false;
-                      document.getElementById("redeem-perk5").style.pointerEvents = "auto";
-                    }
+      var perk5status = await rewardProgramContract.methods.amountPerk(5).call();
+          if (perk5status == 0) {
+             document.getElementById("redeem-perk5").style.color = "var(--dl-color-gray-500)";
+             document.getElementById("redeem-perk5").style.borderColor = "var(--dl-color-gray-500)";
+             document.getElementById("redeem-perk5").disabled = true;
+             document.getElementById("redeem-perk5").style.pointerEvents = "none";
+          }  
 
-                    var perk6status = await rewardProgramContract.methods.amountPerk(6).call();
-                      if (perk6status == 0) {
-                         document.getElementById("redeem-perk6").style.color = "var(--dl-color-gray-500)";
-                         document.getElementById("redeem-perk6").style.borderColor = "var(--dl-color-gray-500)";
-                         document.getElementById("redeem-perk6").disabled = true;
-                         document.getElementById("redeem-perk6").style.pointerEvents = "none";
-                      }  else {
-                        document.getElementById("redeem-perk6").style.color = "#ffffff";
-                        document.getElementById("redeem-perk6").style.borderColor = "#ffffff";
-                        document.getElementById("redeem-perk6").disabled = false;
-                        document.getElementById("redeem-perk6").style.pointerEvents = "auto";
-                      }
+      var perk6status = await rewardProgramContract.methods.amountPerk(6).call();
+          if (perk6status == 0) {
+             document.getElementById("redeem-perk6").style.color = "var(--dl-color-gray-500)";
+             document.getElementById("redeem-perk6").style.borderColor = "var(--dl-color-gray-500)";
+             document.getElementById("redeem-perk6").disabled = true;
+             document.getElementById("redeem-perk6").style.pointerEvents = "none";
+          }  
 
-                      var perk7status = await rewardProgramContract.methods.amountPerk(7).call();
-                        if (perk7status == 0) {
-                           document.getElementById("redeem-perk7").style.color = "var(--dl-color-gray-500)";
-                           document.getElementById("redeem-perk7").style.borderColor = "var(--dl-color-gray-500)";
-                           document.getElementById("redeem-perk7").disabled = true;
-                           document.getElementById("redeem-perk7").style.pointerEvents = "none";
-                        }  else {
-                          document.getElementById("redeem-perk7").style.color = "#ffffff";
-                          document.getElementById("redeem-perk7").style.borderColor = "#ffffff";
-                          document.getElementById("redeem-perk7").disabled = false;
-                          document.getElementById("redeem-perk7").style.pointerEvents = "auto";
-                        }
+      var perk7status = await rewardProgramContract.methods.amountPerk(7).call();
+          if (perk7status == 0) {
+             document.getElementById("redeem-perk7").style.color = "var(--dl-color-gray-500)";
+             document.getElementById("redeem-perk7").style.borderColor = "var(--dl-color-gray-500)";
+             document.getElementById("redeem-perk7").disabled = true;
+             document.getElementById("redeem-perk7").style.pointerEvents = "none";
+          } 
 
 
-                        var perk8status = await rewardProgramContract.methods.amountPerk(8).call();
-                          if (perk8status == 0) {
-                             document.getElementById("redeem-perk8").style.color = "var(--dl-color-gray-500)";
-                             document.getElementById("redeem-perk8").style.borderColor = "var(--dl-color-gray-500)";
-                             document.getElementById("redeem-perk8").disabled = true;
-                             document.getElementById("redeem-perk8").style.pointerEvents = "none";
-                          }  else {
-                            document.getElementById("redeem-perk8").style.color = "#ffffff";
-                            document.getElementById("redeem-perk8").style.borderColor = "#ffffff";
-                            document.getElementById("redeem-perk8").disabled = false;
-                            document.getElementById("redeem-perk8").style.pointerEvents = "auto";
-                          }
+      var perk8status = await rewardProgramContract.methods.amountPerk(8).call();
+          if (perk8status == 0) {
+             document.getElementById("redeem-perk8").style.color = "var(--dl-color-gray-500)";
+             document.getElementById("redeem-perk8").style.borderColor = "var(--dl-color-gray-500)";
+             document.getElementById("redeem-perk8").disabled = true;
+             document.getElementById("redeem-perk8").style.pointerEvents = "none";
+          } 
 
-                          var perk9status = await rewardProgramContract.methods.amountPerk(9).call();
-                            if (perk9status == 0) {
-                               document.getElementById("redeem-perk9").style.color = "var(--dl-color-gray-500)";
-                               document.getElementById("redeem-perk9").style.borderColor = "var(--dl-color-gray-500)";
-                               document.getElementById("redeem-perk9").disabled = true;
-                               document.getElementById("redeem-perk9").style.pointerEvents = "none";
-                            }  else {
-                              document.getElementById("redeem-perk9").style.color = "#ffffff";
-                              document.getElementById("redeem-perk9").style.borderColor = "#ffffff";
-                              document.getElementById("redeem-perk9").disabled = false;
-                              document.getElementById("redeem-perk9").style.pointerEvents = "auto";
-                            }
+      var perk9status = await rewardProgramContract.methods.amountPerk(9).call();
+          if (perk9status == 0) {
+             document.getElementById("redeem-perk9").style.color = "var(--dl-color-gray-500)";
+             document.getElementById("redeem-perk9").style.borderColor = "var(--dl-color-gray-500)";
+             document.getElementById("redeem-perk9").disabled = true;
+             document.getElementById("redeem-perk9").style.pointerEvents = "none";
+          } 
 
-    	  if (nftOwnerLowerCase === activeAddressLowerCase) {
+      if (nftOwnerLowerCase === activeAddressLowerCase) {
           if ((verifiedAddLowerCase !== activeAddressLowerCase) || (checkStatus == false)) {
-          document.getElementById("founder-page-state2-container").style.display = "inherit";
-          document.getElementById("founder-page-state1-container").style.display = "none";
+            document.getElementById("founder-page-state2-container").style.display = "inherit";
+            document.getElementById("founder-page-state1-container").style.display = "none";
 
-          document.getElementById("redeem-perk0").style.color = "var(--dl-color-gray-500)";
-          document.getElementById("redeem-perk0").style.borderColor = "var(--dl-color-gray-500)";
-          document.getElementById("redeem-perk0").disabled = true;
-          document.getElementById("redeem-perk0").style.pointerEvents = "none";
+            document.getElementById("redeem-perk0").style.color = "var(--dl-color-gray-500)";
+            document.getElementById("redeem-perk0").style.borderColor = "var(--dl-color-gray-500)";
+            document.getElementById("redeem-perk0").disabled = true;
+            document.getElementById("redeem-perk0").style.pointerEvents = "none";
 
-          document.getElementById("redeem-perk1").style.color = "var(--dl-color-gray-500)";
-          document.getElementById("redeem-perk1").style.borderColor = "var(--dl-color-gray-500)";
-          document.getElementById("redeem-perk1").disabled = true;
-          document.getElementById("redeem-perk1").style.pointerEvents = "none";
+            document.getElementById("redeem-perk1").style.color = "var(--dl-color-gray-500)";
+            document.getElementById("redeem-perk1").style.borderColor = "var(--dl-color-gray-500)";
+            document.getElementById("redeem-perk1").disabled = true;
+            document.getElementById("redeem-perk1").style.pointerEvents = "none";
 
-          document.getElementById("redeem-perk2").style.color = "var(--dl-color-gray-500)";
-          document.getElementById("redeem-perk2").style.borderColor = "var(--dl-color-gray-500)";
-          document.getElementById("redeem-perk2").disabled = true;
-          document.getElementById("redeem-perk2").style.pointerEvents = "none";
+            document.getElementById("redeem-perk2").style.color = "var(--dl-color-gray-500)";
+            document.getElementById("redeem-perk2").style.borderColor = "var(--dl-color-gray-500)";
+            document.getElementById("redeem-perk2").disabled = true;
+            document.getElementById("redeem-perk2").style.pointerEvents = "none";
 
-          document.getElementById("redeem-perk3").style.color = "var(--dl-color-gray-500)";
-          document.getElementById("redeem-perk3").style.borderColor = "var(--dl-color-gray-500)";
-          document.getElementById("redeem-perk3").disabled = true;
-          document.getElementById("redeem-perk3").style.pointerEvents = "none";
+            document.getElementById("redeem-perk3").style.color = "var(--dl-color-gray-500)";
+            document.getElementById("redeem-perk3").style.borderColor = "var(--dl-color-gray-500)";
+            document.getElementById("redeem-perk3").disabled = true;
+            document.getElementById("redeem-perk3").style.pointerEvents = "none";
 
-          document.getElementById("redeem-perk4").style.color = "var(--dl-color-gray-500)";
-          document.getElementById("redeem-perk4").style.borderColor = "var(--dl-color-gray-500)";
-          document.getElementById("redeem-perk4").disabled = true;
-          document.getElementById("redeem-perk4").style.pointerEvents = "none";
+            document.getElementById("redeem-perk4").style.color = "var(--dl-color-gray-500)";
+            document.getElementById("redeem-perk4").style.borderColor = "var(--dl-color-gray-500)";
+            document.getElementById("redeem-perk4").disabled = true;
+            document.getElementById("redeem-perk4").style.pointerEvents = "none";
 
-          document.getElementById("redeem-perk5").style.color = "var(--dl-color-gray-500)";
-          document.getElementById("redeem-perk5").style.borderColor = "var(--dl-color-gray-500)";
-          document.getElementById("redeem-perk5").disabled = true;
-          document.getElementById("redeem-perk5").style.pointerEvents = "none";
+            document.getElementById("redeem-perk5").style.color = "var(--dl-color-gray-500)";
+            document.getElementById("redeem-perk5").style.borderColor = "var(--dl-color-gray-500)";
+            document.getElementById("redeem-perk5").disabled = true;
+            document.getElementById("redeem-perk5").style.pointerEvents = "none";
 
-          document.getElementById("redeem-perk6").style.color = "var(--dl-color-gray-500)";
-          document.getElementById("redeem-perk6").style.borderColor = "var(--dl-color-gray-500)";
-          document.getElementById("redeem-perk6").disabled = true;
-          document.getElementById("redeem-perk6").style.pointerEvents = "none";
+            document.getElementById("redeem-perk6").style.color = "var(--dl-color-gray-500)";
+            document.getElementById("redeem-perk6").style.borderColor = "var(--dl-color-gray-500)";
+            document.getElementById("redeem-perk6").disabled = true;
+            document.getElementById("redeem-perk6").style.pointerEvents = "none";
 
-          document.getElementById("redeem-perk7").style.color = "var(--dl-color-gray-500)";
-          document.getElementById("redeem-perk7").style.borderColor = "var(--dl-color-gray-500)";
-          document.getElementById("redeem-perk7").disabled = true;
-          document.getElementById("redeem-perk7").style.pointerEvents = "none";
+            document.getElementById("redeem-perk7").style.color = "var(--dl-color-gray-500)";
+            document.getElementById("redeem-perk7").style.borderColor = "var(--dl-color-gray-500)";
+            document.getElementById("redeem-perk7").disabled = true;
+            document.getElementById("redeem-perk7").style.pointerEvents = "none";
+  
+            document.getElementById("redeem-perk8").style.color = "var(--dl-color-gray-500)";
+            document.getElementById("redeem-perk8").style.borderColor = "var(--dl-color-gray-500)";
+            document.getElementById("redeem-perk8").disabled = true;
+            document.getElementById("redeem-perk8").style.pointerEvents = "none";
 
-          document.getElementById("redeem-perk8").style.color = "var(--dl-color-gray-500)";
-          document.getElementById("redeem-perk8").style.borderColor = "var(--dl-color-gray-500)";
-          document.getElementById("redeem-perk8").disabled = true;
-          document.getElementById("redeem-perk8").style.pointerEvents = "none";
-
-          document.getElementById("redeem-perk9").style.color = "var(--dl-color-gray-500)";
-          document.getElementById("redeem-perk9").style.borderColor = "var(--dl-color-gray-500)";
-          document.getElementById("redeem-perk9").disabled = true;
-          document.getElementById("redeem-perk9").style.pointerEvents = "none";
+            document.getElementById("redeem-perk9").style.color = "var(--dl-color-gray-500)";
+            document.getElementById("redeem-perk9").style.borderColor = "var(--dl-color-gray-500)";
+            document.getElementById("redeem-perk9").disabled = true;
+            document.getElementById("redeem-perk9").style.pointerEvents = "none";
           }
       	}
         else {
