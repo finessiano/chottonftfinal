@@ -458,13 +458,6 @@ window.ethereum.on('chainChanged', function () {
   window.location.reload();
 })
 
-// EXECUTE ON CONNECT WALLET BUTTON CLICK
-
-const mmEnable = document.getElementById('mm-connect');
-mmEnable.onclick = async () => {
-  window.location.reload();
-}
-
 // REDEEM PERKS
 
 const redeemPerk0 = document.getElementById('redeem-perk0');
