@@ -234,6 +234,12 @@
   }
 }
 @media(max-width: 479px) {
+  .html {
+    background-color: #000000;
+  }
+  .body {
+    background-color: #000000;
+  }
   .landing-page-container {
     background-color: #000000;
   }
